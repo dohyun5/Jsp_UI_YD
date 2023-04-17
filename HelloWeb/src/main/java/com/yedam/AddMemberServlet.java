@@ -52,9 +52,6 @@ public class AddMemberServlet extends HttpServlet{
 		}
 		
 		
-		
-		
-		
 //		try {
 //			Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","hr","hr");
 //			//쿼리를 조회하고 처리 결과를 가지고 오는 PreparedStatement객체를 사용

@@ -36,7 +36,7 @@ public class EmpListServlet extends HttpServlet{
 //					}
 					for(Employee emp : list) {
 						//System.out.println("System.out.println(\"eid: \" + rs.getInt(\"employee_id\") + \",fname :\" + rs.getString(\"first_name\")+ \",email :\" + rs.getString(\"email\")+ \",phone_number :\" + rs.getString(\"phone_number\"))");
-						out.print("<tr><td><a href='searchMember?emp_id="+emp.getEmployeeId()+"'>"+emp.getEmployeeId()
+						out.print("<tr><td><a href='searchMember?empId="+emp.getEmployeeId()+"'>"+emp.getEmployeeId()
 											+"</a></td><td>"+emp.getFirstName()
 											+"</td><td>"+emp.getLastName()
 											+"</td><td>"+emp.getEmail()
