@@ -31,6 +31,36 @@ public class EmpDAO {
 			e.printStackTrace();
 		}
 	}
+	//수정
+	public boolean updateEmployee(Employee emp) {
+		conn = DAO.getConnect();
+		String sql = "update employees set first_name=?,last_name=?,email=? where employee_id = ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, emp.getFirstName());
+			psmt.setString(2, emp.getLastName());
+			psmt.setString(3, emp.getEmail());
+			psmt.setInt(4, emp.getEmployeeId());
+			
+			
+			int r = psmt.executeUpdate();
+			System.out.println("처리된 건수:" + r);
+			
+			if(r>0) {
+				return true;
+			} 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return false;
+		
+	}
+	
+	
+	
+	
 	
 	// 단건 조회
 	public Employee getEmp(int empId) {
@@ -112,7 +142,6 @@ public class EmpDAO {
 		return false;
 		
 	}
-	
 	
 	
 	//사원목록
