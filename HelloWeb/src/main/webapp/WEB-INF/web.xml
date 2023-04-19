@@ -5,7 +5,7 @@
   <!-- 서블릿 정보 등록 -->
   <servlet>
   	<servlet-name>frontControl</servlet-name>
-  	<servlet-class>com.yedam.FrontController</servlet-class>
+  	<servlet-class>com.yedam.common.FrontController</servlet-class>
   </servlet>
 	<servlet-mapping>
 		<servlet-name>frontControl</servlet-name>

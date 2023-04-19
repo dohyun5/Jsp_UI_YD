@@ -11,8 +11,12 @@
 		List<Employee> list =  dao.getEmpList(); */
 		List<Employee> list = (List<Employee>) request.getAttribute("listInfo");// Attribute반환타입 : Object  따라서 받아올 타입으로 변환. 
 		
+		String fname = (String) request.getAttribute("reqInfo");//logincontrol참고
+		String lname = (String) session.getAttribute("sesInfo");//logincontrol참고
 		
 	%>
+	<p>Request: <%=fname %></p>
+	<p>Session: <%=lname %></p>
 	<table class="table">
 		<thead>
 			<tr><th>사원번호</th><th>이름</th><th>이메일</th></tr>

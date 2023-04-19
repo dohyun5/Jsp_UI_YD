@@ -36,6 +36,8 @@ public class FrontController extends HttpServlet{
 		map.put("/addMember.do", new AddMemberControl());
 		map.put("/deleteMember.do", new DeleteMemberControl());
 		map.put("/loginForm.do", new LoginFormControl());
+		map.put("/login.do", new LoginControl());
+		map.put("/logout.do", new LogoutContorl());
 	}
 	
 	@Override
@@ -53,8 +55,8 @@ public class FrontController extends HttpServlet{
 		System.out.println(page);
 		System.out.println(map.get(page));
 		
-		Control control = map.get(page);
-		control.exec(req, resp);
+		Control control = map.get(page); //실행하는곳
+		control.exec(req, resp);//실행하는곳
 		
 	
 	}
