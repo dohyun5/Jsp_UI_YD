@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.common.NoticeMapper">
+  <select id="getEmp" parameterType="int" resultType="employee"><!-- resultType  -->
+    select * from employees where employee_id = #{empId} <!-- 단건조회 -->
+  </select>
+  <select id="empList" resultType="employee">
+  	select * from employees order by employee_id
+  </select>
+  <delete id="delEmp" parameterType="int">
+  	delete from employees where employee_id = #{empId}
+  </delete>
+  <insert id="addEmp" parameterType="employee">
+  	insert into employees(employee_id,last_name,first_name,email,job_id,hire_date)
+  	values(#{employeeId},#{lastName},#{firstName},#{email},#{jobId},sysdate)
+  </insert>
+</mapper>
