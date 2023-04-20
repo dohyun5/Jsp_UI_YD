@@ -26,7 +26,7 @@ public class NoticeServiceImpl implements NoticeService { //인터페이스 구�
 	}
 
 	@Override
-	public boolean modiftNotice(NoticeVO vo) {
+	public boolean modifyNotice(NoticeVO vo) {
 		
 		return mapper.updateNotice(vo)==1;
 	}
@@ -39,7 +39,8 @@ public class NoticeServiceImpl implements NoticeService { //인터페이스 구�
 
 	@Override
 	public NoticeVO getNotice(int noticeNo) {
-		
+		//조회수 증가.
+		mapper.updateCount(noticeNo);
 		return mapper.searchNotice(noticeNo);
 	}
 	

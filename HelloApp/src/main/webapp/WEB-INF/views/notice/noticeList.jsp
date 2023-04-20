@@ -1,31 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="my"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
 </head>
+
 <body>
-
-	<jsp:include page="../main.jsp"></jsp:include>
-	<my:if test="${list != null }">
-		<p>${list}</p>
-	</my:if>
-
-
-
-<my:forEach begin="1" end="10" step="3" var="i">
-	<p>${i }</p>
-</my:forEach>
-
-<my:forEach var="notice" items="${list }" >
-	<p>${notice }</p>	
-</my:forEach>
-
-
-
+<c:set var="no" value="0"></c:set>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>순번</th>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+			</tr>
+		</thead>
+		<c:forEach var="notice" items="${list}">
+			
+		
+			<tr>
+				<td><c:out value="${no=no+1 }"></c:out></td>
+				<td><a href="getNotice.do?nNo=${notice.noticeNo}">${notice.noticeNo}</a></td>
+				<td>${notice.noticeTitle}</td>
+				<td>${notice.noticeWriter}</td>
+				<td>${notice.hitCount}</td>
+			</tr>
+		</c:forEach>
+	</table>
 </body>
+
 </html>
+
+

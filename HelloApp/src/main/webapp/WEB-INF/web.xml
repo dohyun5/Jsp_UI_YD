@@ -6,6 +6,19 @@
 
 	<display-name>HelloApp</display-name>
 
+	<!-- Tiles 환경 세팅! -->
+	<listener>
+		<listener-class>org.apache.tiles.extras.complete.CompleteAutoloadTilesListener</listener-class>
+	</listener>
+	<servlet>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<servlet-class>org.apache.tiles.web.util.TilesDispatchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Tiles Dispatch Servlet</servlet-name>
+		<url-pattern>*.tiles</url-pattern>
+	</servlet-mapping>
+	<!-- 서블릿 정보 등록 -->
 	<servlet>
 		<servlet-name>frontControl</servlet-name>
 		<servlet-class>com.yedam.common.FrontController</servlet-class>

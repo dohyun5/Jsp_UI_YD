@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="myapp.homepage" template="/layouts/classic.jsp">
+		<put-attribute name="title"	value="Tiles tutorial homepage" />
+		<put-attribute name="header" value="/tiles/banner.jsp" />
+		<put-attribute name="menu"	value="/tiles/common_menu.jsp" />
+		<put-attribute name="body" value="/tiles/home_body.jsp" />
+		<put-attribute name="footer" value="/tiles/credits.jsp" />
+	</definition>
+	
+	<definition name="helloapp" template="/WEB-INF/layout/template.jsp">
+		<put-attribute name="sidebar" value="/WEB-INF/layout/sidebar.jsp"></put-attribute>
+		<put-attribute name="nav" value="/WEB-INF/layout/nav.jsp"></put-attribute>
+		<put-attribute name="body" value="/WEB-INF/layout/body.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="WILDCARD:notice/*" extends="helloapp"><!-- WILDCARD: ':'반드시 붙여쓰기!  wildcard */*로 하위 경로설정 가능-->
+		<put-attribute name="body" value="/WEB-INF/views/notice/{1}.jsp"></put-attribute><!-- wildcard로 경로설정시 1 = 폴더 2 = 파일 -->
+	</definition>
+
+	<definition name="WILDCARD:product/*" extends="myapp.homepage"><!-- extends의 경로로 탬플릿 지정 -->
+		<put-attribute name="body" value="/WEB-INF/views/product/{1}.jsp"></put-attribute><!-- wildcard로 경로설정시 1 = 폴더 2 = 파일 -->
+	</definition>
+	
+	<definition name="WILDCARD:*/*" extends="helloapp"><!-- extends의 경로로 탬플릿 지정 -->
+		<put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp"></put-attribute><!-- wildcard로 경로설정시 1 = 폴더 2 = 파일 -->
+	</definition>
+
+
+</tiles-definitions>

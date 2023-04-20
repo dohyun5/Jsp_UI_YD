@@ -1,4 +1,4 @@
-package com.yedam.common;
+package com.yedam.notice.control;
 
 import java.io.IOException;
 
@@ -6,14 +6,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MainControl implements Control {
+import com.yedam.common.Control;
 
-	
+public class NoticeAddFormControl implements Control {
+
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("myName", "Hongkildong");
-		//return "WEB-INF/views/main.jsp";
-		return "product/productList.tiles";
+		
+		return "notice/noticeAddForm.tiles";
 	}
 
 }

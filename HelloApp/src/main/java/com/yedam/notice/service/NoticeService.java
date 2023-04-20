@@ -9,7 +9,7 @@ public interface NoticeService {
 	
 	public List<NoticeVO> noticeList();
 	public boolean addNotice(NoticeVO vo);
-	public boolean modiftNotice(NoticeVO vo);
+	public boolean modifyNotice(NoticeVO vo);
 	public boolean removeNotice(int noticeNo);
 	public NoticeVO getNotice(int noticeNo);
 	
