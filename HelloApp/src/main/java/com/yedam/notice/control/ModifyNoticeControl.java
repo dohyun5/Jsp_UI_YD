@@ -34,13 +34,14 @@ public class ModifyNoticeControl implements Control {
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			String writer = req.getParameter("writer");
+			String page = req.getParameter("pageNum");
 			System.out.println(nNo);
 			NoticeVO vo = new NoticeVO();
 			vo.setNoticeNo(Integer.parseInt(nNo));
 			vo.setNoticeTitle(title);
 			vo.setNoticeContent(content);
 			vo.setNoticeWriter(writer);
-			
+			req.setAttribute("pageNum", page);
 			NoticeService service = new NoticeServiceImpl();
 			service.modifyNotice(vo);
 //			if() {

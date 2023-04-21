@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 			<th>작성자</th>
-			<td><input type="text" name="writer" value="${noticeInfo.noticeWriter }" ></td>
+			<td><input type="text" name="writer" value="${noticeInfo.noticeWriter }" readonly></td>
 		</tr>
 		<tr>
 			<th>첨부파일</th>
@@ -32,7 +32,7 @@
 		</tr>
 		<tr>
 			<td colspan="2" align="center">
-				<button type="submit">저장(수정)</button>
+				<button type="submit" onClick="location.href='noticeList.do?page=${pageNum}'">저장(수정)</button>
 				<button type="button">삭제</button>
 			</td>
 		</tr>

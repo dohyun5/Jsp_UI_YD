@@ -13,14 +13,4 @@ public interface Control {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }

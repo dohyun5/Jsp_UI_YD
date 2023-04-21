@@ -21,10 +21,12 @@ public class GetNoticeControl implements Control {
 		// param: nNo
 		
 		String nNo = req.getParameter("nNo");
+		String page = req.getParameter("page");
+		
 		NoticeService service = new NoticeServiceImpl();
 		NoticeVO vo = service.getNotice(Integer.parseInt(nNo));
 		req.setAttribute("noticeInfo", vo);
-		
+		req.setAttribute("pageNum", page);
 		
 		if(vo.getAttachFile() != null) {
 			String imgPath = req.getServletContext().getRealPath("images");
@@ -34,6 +36,7 @@ public class GetNoticeControl implements Control {
 			String fileType = Files.probeContentType(file);
 			req.setAttribute("fileType", fileType.substring(0, fileType.indexOf("/")));
 			//req.setAttribute("fileType", fileType.substring(0, 5));
+			
 			
 		}
 		

@@ -14,9 +14,10 @@ public class NoticeServiceImpl implements NoticeService { //인터페이스 구�
 	NoticeMapper mapper = session.getMapper(NoticeMapper.class);
 	
 	@Override
-	public List<NoticeVO> noticeList() {
+	public List<NoticeVO> noticeList(int page) {
 		
-		return mapper.noticeList();
+		//return mapper.noticeList();
+		return mapper.noticeWithPage(page);
 	}
 
 	@Override
@@ -43,5 +44,8 @@ public class NoticeServiceImpl implements NoticeService { //인터페이스 구�
 		mapper.updateCount(noticeNo);
 		return mapper.searchNotice(noticeNo);
 	}
-	
+	@Override
+	public int totalCount() {
+		return mapper.getCount();
+	}
 }

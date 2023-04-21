@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Webapp/javascript/sample1.html</title>
+</head>
+<body>
+	<div id="show">
+		<div id="child">
+			<p>Hello</p>
+		</div>
+		<ul>
+			<li>Apple</li>
+			<li>Banana</li>
+			<li>Cherry</li>
+		</ul>
+	</div>
+
+	<script>
+	let child = document.getElementById('child');
+	let elem = document.querySelector('li');
+	//console.log(child);
+	//console.log(child.parentElement.parentElement);
+	//console.log(child.nextElementSibling.children[0]);
+	//console.log(elem.innerText);
+	elem.innerText = '사과.링고.애플';
+	console.log(elem.innerText);
+	
+	elem = document.querySelector('li:nth-of-type(2)')
+	elem.addEventListener('click', function(){
+		alert(elem.innerText)		
+	});
+	console.log(elem.innerText);
+	
+	
+	
+	
+/*	
+let name = "홍길동"
+console.log(name)
+
+let num = 100;
+num = "apple"
+num = 100 > 10;
+console.log(typeof num);
+let obj = {}
+obj.id = 'user01';
+obj.name = 'hong';
+obj.hobbies = ['reading', 'sleeping', 'eating'];
+
+
+console.log(obj);
+
+console.log(obj.hobbies[0]);
+for(let hobby of obj.hobbies){
+	console.log(hobby);
+}
+
+console.clear();//로그 지우기 
+for(let prop in obj){
+	console.log(prop, obj[prop]);
+}
+//Document Object Model
+console.log(window.document.children[0].children);//children - 하위속성으로 
+//window.alert('hi')
+
+*/
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
