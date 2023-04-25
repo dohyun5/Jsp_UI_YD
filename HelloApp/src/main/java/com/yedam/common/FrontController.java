@@ -17,6 +17,7 @@ import com.yedam.member.control.LogoutControl;
 import com.yedam.notice.control.AddNoticeControl;
 import com.yedam.notice.control.AddReplyControl;
 import com.yedam.notice.control.GetNoticeControl;
+import com.yedam.notice.control.ModiftReplyControl;
 import com.yedam.notice.control.ModifyNoticeControl;
 import com.yedam.notice.control.NoticeAddFormControl;
 import com.yedam.notice.control.NoticeListControl;
@@ -48,6 +49,10 @@ public class FrontController extends HttpServlet{
 		map.put("/replyList.do", new ReplyListControl());
 		map.put("/addReply.do", new AddReplyControl());
 		map.put("/removeReply.do", new RemoveReplyControl());
+		map.put("/modifyReply.do", new ModiftReplyControl());
+		//차트생성
+		map.put("/chart.do", new ChartControl());
+		map.put("/chartData.do", new ChartDataControl());
 		
 		
 	}

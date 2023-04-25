@@ -17,8 +17,16 @@
 		values(#{replyNo}, #{noticeNo}, #{reply}, #{replyWriter},sysdate)
 	</insert>
 		
-	<delete id="deleteReply" parameterType="reply">
-		delete into tbl_reply where reply_no=#{replyNo}
+	<delete id="deleteReply" parameterType="int">
+		delete from tbl_reply where reply_no = #{replyNo}
 	</delete>	
-		
+	
+	<update id="updateReply" parameterType="reply">
+		update tbl_reply set reply = #{reply} where reply_no = #{replyNo}
+	</update>
+	
+	<select id="searchReply" parameterType="int">
+		select * from tbl_reply where reply_no = #{replyNo}
+	</select>
+	
 </mapper>

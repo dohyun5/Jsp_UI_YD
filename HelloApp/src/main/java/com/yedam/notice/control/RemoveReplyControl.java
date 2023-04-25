@@ -20,28 +20,16 @@ public class RemoveReplyControl implements Control {
 	@Override
 	public String execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String rNo = req.getParameter("replyNo");
-		String reply = req.getParameter("reply");
-		
-		
-		ReplyVO vo = new ReplyVO();
-		vo.setReplyNo(Integer.parseInt(rNo));
-		vo.setReply(reply);
+		String rno = req.getParameter("rno");
 		
 		ReplyService service = new ReplyServiceImpl();
-		boolean result = service.delReply(vo);
 		String json = "";
 		
-		Map<String, Object> map = new HashMap<>();
-		
-		if(result) {
-			map.put("retCode", "Success");
-			map.put("data",	vo);
+		if(service.delReply(Integer.parseInt(rno))) {
+			json = "{\"retCode\":\"Success\"}";
 		} else {
-			map.put("retCode","Fail");
+			json = "{\"retCode\":\"Fail\"}";
 		}
-		Gson gson = new GsonBuilder().create();
-		json = gson.toJson(map);
 		return json + ".json";
 	}
 

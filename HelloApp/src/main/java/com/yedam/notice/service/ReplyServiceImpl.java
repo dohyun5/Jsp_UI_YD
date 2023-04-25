@@ -29,9 +29,22 @@ public class ReplyServiceImpl implements ReplyService{
 
 
 	@Override
-	public boolean delReply(ReplyVO vo) {
-		return mapper.deleteReply(vo) == 1;
+	public boolean delReply(int replyNo) {
+		return mapper.deleteReply(replyNo) == 1;
 	}
+
+
+	@Override
+	public boolean updateReply(ReplyVO vo) {
+		return mapper.updateReply(vo) == 1;
+	}
+
+
+	@Override
+	public ReplyVO searchReply(int replyNo) {
+		return mapper.searchReply(replyNo);
+	}
+
 
 	
 	
