@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<p>진료소 현황</p>
+	<!-- <input type="text" id="searchKey" value="서울특별시"> -->
+	<select id="sido">
+		<!-- <option value="서울특별시">서울특별시</option>
+		<option value="인천광역시">인천광역시</option>
+		<option value="대전광역시">대전광역시</option>
+		<option value="대구광역시">대구광역시</option>
+		<option value="부산광역시">부산광역시</option> -->
+	</select>
+	<button id="searchBtn">조회</button>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th>센터ID</th>
+				<th>센터명</th>
+				<th>센터주소</th>
+				<th>시설</th>
+			</tr>
+		</thead>
+		<tbody id="list">
+
+
+		</tbody>
+	</table>
+
+
+	<script>
+		let showFields = ['id', 'centerName', 'address','facilityName'];
+		let url =
+			`https://api.odcloud.kr/api/15077586/v1/centers?page=1&perPage=284&serviceKey=MOKhKUwvHlXbzrH21OCL%2FsAec1BzqELogaeJjAuThNOZgxI2ElketQTJM5iV43y19tJu9djSTrPRBpOGicsapg%3D%3D`;
+
+		let list = document.querySelector('#list');
+		let allCenter;
+		//목록 가져오기
+		fetch(url)
+			.then(resolve => resolve.json())
+			.then(result => {
+				console.log(result.data);
+				allCenter = result.data;//조회된 결과를 result.data에 저장. 전역변수로 사용하기 위해
+				let sidoAry = [];// sido정보 => 중복된값을 제거 새로운배열 //indexOf(값) , -1을 반환.
+				// for(let center of result.data){
+				// 	if(sidoAry.indexOf(center.sido) == -1){
+				// 		sidoAry.push(center.sido)
+				// 	}
+				// }
+				result.data.forEach(center =>{
+					if(sidoAry.indexOf(center.sido) == -1){
+						sidoAry.push(center.sido);
+					}
+				});
+
+				//목록 보기에서 옵션 달아주는 부분
+				let sidoItem = document.getElementById('sido');
+				sidoAry.forEach(sido => {
+					let opt = document.createElement('option');
+					opt.value = sido;
+					opt.innerText = sido;
+					sidoItem.append(opt);
+				})
+
+				
+
+				result.data.forEach(element => {
+					//console.log(element)	
+					let searchKey = document.getElementById("searchKey").value;
+					if(element.sido == searchKey)
+						list.append(makeRow(element));
+
+				}); //js의 배열이 가지고 있는 forEach
+			})
+			.catch(error => console.error(error));
+
+			//조회 이벤트.
+			document.querySelector('#searchBtn').addEventListener('click', function(){
+				let searchKey = document.getElementById("sido").value;
+				findList(searchKey);
+			})
+	
+
+		//row 한건 생성.
+		function makeRow(center = {}) {
+			let tr = document.createElement('tr');
+			tr.addEventListener('click',function(){
+				location.href = 'map.jsp?lat='+center.lat+'&lng='+center.lng+'&facilityName='+center.facilityName;
+			})
+			for (let field of showFields) {
+				let td = document.createElement('td');
+				td.innerText = center[field];
+				tr.append(td);
+			}
+			return tr;
+		}
+		//시도정보 조회.
+		function findList(sido){
+			list.innerHTML = ""; //기존 목록 제거.
+			allCenter.forEach(center => {
+				if(center.sido == sido){
+					list.append(makeRow(center));
+				}
+			})
+		}
+
+
+
+
+
+
+	</script>
+
+
+</body>
+
+</html>

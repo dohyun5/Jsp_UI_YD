@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>sample4.html</p>
+	<ul id="list">
+		
+	</ul>
+	<script>
+		let xht = new XMLHttpRequest();// 비동기방식 처리.
+		xht.open('get','MOCK_DATA.json');
+		xht.send();
+		xht.onload = function(){
+			console.log(JSON.parse(xht.response));//js의 obj타입으로 변환하기 위한 json.parse
+			
+			
+		}
+		fetch('MOCK_DATA.json')
+		.then(function(resolve){   //fetch().then(성공하면 실행할 함수, 실패하면 실행할 함수) 값을 계속 받아와서 then반복으로 연속적으로 사용할수있다.
+			console.log('success');
+			return resolve.text();
+		},function(){
+			console.log('error');
+
+		})
+		.then(function(result){
+			console.log('success',result);
+		},function(error){
+			console.log('error',error)
+		});  
+		
+		let list = documen.getElementById('list')
+		fetch('MOCK_DATA.json')
+		.then(resolve => resolve.json()) //text()   //JSON.parse기능을 가지고 있는것 .json 
+		.then(result => {
+			//console.log(result);
+			for(let i=0; i<result.length;i++){
+				let li = document.createElement('li');
+				li.innerText = result[i].id;
+				
+				list.append(li);
+			}
+			
+		})//
+		.catch(error => console.log(error))//then에서 예외가 발생하면 catch가 처리//.catch(function(error){consolr.log(error);})
+		
+	</script>
+	
+	
+</body>
+</html>

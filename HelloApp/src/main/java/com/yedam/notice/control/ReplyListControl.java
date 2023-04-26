@@ -32,7 +32,6 @@ public class ReplyListControl implements Control {
 			if(i+1 != list.size()) {
 				json +=",";
 			}
-			
 		}
 		json += "]";
 		return json+".json";
