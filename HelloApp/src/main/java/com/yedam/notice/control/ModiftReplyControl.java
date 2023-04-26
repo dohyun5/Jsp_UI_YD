@@ -40,7 +40,7 @@ public class ModiftReplyControl implements Control {
 		
 		if(result) {
 			vo = service.searchReply(vo.getReplyNo());
-			System.out.println("바밥"+vo);
+			//System.out.println("바밥"+vo);
 			map.put("retCode","Success");
 			map.put("data", vo);
 		}else {
