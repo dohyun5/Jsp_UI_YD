@@ -47,7 +47,7 @@
 							<div class="card-body p-4">
 								<div class="text-center">
 									<!-- Product name-->
-									<h5 class="fw-bolder"><a href="">${product.productName }</a></h5>
+									<h5 class="fw-bolder"><a href="productGet.do?PN=${product.productNo}">${product.productName }</a></h5>
 									<!-- Product reviews-->
 									<div
 										class="d-flex justify-content-center small text-warning mb-2">

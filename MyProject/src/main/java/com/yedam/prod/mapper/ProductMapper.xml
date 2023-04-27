@@ -7,7 +7,7 @@
 		select * from tbl_product
 	</select>
 	
-	<select id="getProduct" parameterType="int">
+	<select id="getProduct" parameterType="int" resultType="product">
 		select * from tbl_product where product_no = #{productNo}
 	</select>
 

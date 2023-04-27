@@ -22,7 +22,7 @@ public class ProductGetControl implements Control {
 		ProductService service = new ProductServiceImpl();
 		ProductVO vo = service.getProduct(Integer.parseInt(PN));
 		req.setAttribute("productGet", vo);
-		
+		System.out.println(vo);
 		return "prod/prodMain.tiles";
 	}
 
