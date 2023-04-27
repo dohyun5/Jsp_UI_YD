@@ -27,11 +27,11 @@
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="img/${productGet.productImg }" alt="..." /></div>
                     <div class="col-md-6">
-                        <div class="small mb-1">SKU: BST-498</div>
+                        <div class="small mb-1"></div>
                         <h1 class="display-5 fw-bolder">${productGet.productName }</h1>
                         <div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">${productGet.productPrice }</span>
-                            <span>${productGet.productDprice }</span>
+                            <span class="text-decoration-line-through">$${productGet.productPrice }</span>
+                            <span>$${productGet.productDprice }</span>
                         </div>
                         <p class="lead">${productGet.productContent }</p>
                         <div class="d-flex">
@@ -50,28 +50,28 @@
             <div class="container px-4 px-lg-5 mt-5">
                 <h2 class="fw-bolder mb-4">Related products(추천순위)</h2>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <c:forEach var="productGet" items="${List}">
+                <c:forEach var="product" items="${List}" begin="1" end="4">
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
                             <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="img/${productGet.productImg }" alt="커피뺌" />
+                            <img class="card-img-top" src="img/${product.productImg }" alt="커피뺌" />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder">${productGet.productName }</h5>
+                                    <h5 class="fw-bolder">${product.productName }</h5>
                                     <!-- Product reviews-->
                                    <div
 										class="d-flex justify-content-center small text-warning mb-2">
-										<c:forEach begin="1" end="${productGet.productScore }">
+										<c:forEach begin="1" end="${product.productScore }">
 											<div class="bi-star-fill"></div>
 										</c:forEach>
 									</div>
                                     <!-- Product price-->
-                                    <span class="text-muted text-decoration-line-through">${productGet.productPrice }</span>
-                                    ${productGet.productDprice }
+                                    <span class="text-muted text-decoration-line-through">$${product.productPrice }</span>
+                                    $${product.productDprice }
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -80,8 +80,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
                     </c:forEach>
+                </div>
+                    
             </div>
         </section>
         <!-- Footer-->

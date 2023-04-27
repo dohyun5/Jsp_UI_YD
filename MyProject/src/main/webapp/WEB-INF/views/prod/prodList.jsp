@@ -9,7 +9,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-<title>Shop Homepage - Start Bootstrap Template</title>
+<title>Shop Homepage - Coffee Tunnel</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
 <!-- Bootstrap icons-->
@@ -23,9 +23,8 @@
 	<header class="bg-dark py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="text-center text-white">
-				<h1 class="display-4 fw-bolder">Shop in style</h1>
-				<p class="lead fw-normal text-white-50 mb-0">With this shop
-					hompeage template</p>
+				<h1 class="display-4 fw-bolder">Rosting Coffee Beans</h1>
+				<p class="lead fw-normal text-white-50 mb-0">모든 이의 취향은 존중 받아야 한다는 커피의 믿음</p>
 			</div>
 		</div>
 	</header>
@@ -34,7 +33,7 @@
 		<div class="container px-4 px-lg-5 mt-5">
 			<div
 				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-				<c:forEach var="product" items="${List}">
+				<c:forEach var="product" items="${List}" >
 					<div class="col mb-5">
 						<div class="card h-100">
 							<!-- Sale badge-->
@@ -56,8 +55,8 @@
 										</c:forEach>
 									</div>
 									<!-- Product price-->
-									<span class="text-muted text-decoration-line-through">${product.productPrice}</span>
-									${product.productDprice}
+									<span class="text-muted text-decoration-line-through">$${product.productPrice}</span>
+									$${product.productDprice}
 								</div>
 							</div>
 							<!-- Product actions-->
