@@ -59,13 +59,13 @@ public class FrontController extends HttpServlet{
 		map.put("/chartData.do", new ChartDataControl());
 		
 		//fullcalendar.
-		map.put("/fullCalendar.do", new FullCalendarControl());
-		//목록 json형태의 데이터
-		map.put("/eventList.do", new EventListControl());
-		//등록 json형태의 데이터 retCode: Success, Fail
-		map.put("/addEvent.do", new AddEventControl());
-		//삭제 json형태의 데이터 retCode: Success, Fail
-		map.put("/removeEvent.do", new RemoveEventControl());
+//		map.put("/fullCalendar.do", new FullCalendarControl());
+//		//목록 json형태의 데이터
+//		map.put("/eventList.do", new EventListControl());
+//		//등록 json형태의 데이터 retCode: Success, Fail
+//		map.put("/addEvent.do", new AddEventControl());
+//		//삭제 json형태의 데이터 retCode: Success, Fail
+//		map.put("/removeEvent.do", new RemoveEventControl());
 		
 		
 		

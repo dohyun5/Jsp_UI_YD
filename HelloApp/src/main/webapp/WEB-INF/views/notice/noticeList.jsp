@@ -44,8 +44,6 @@
 		</tr>
 	</thead>
 	<c:forEach var="notice" items="${list}">
-
-
 		<tr>
 			<td><c:out value="${no=no+1 }"></c:out></td>
 			<td><a href="getNotice.do?page=${pageInfo.pageNum }&nNo=${notice.noticeNo}">${notice.noticeNo}</a></td>
