@@ -22,7 +22,11 @@ public class ProductServiceImpl implements ProductService{
 		
 		return mapper.getProduct(productNo);
 	}
+	@Override
+	public List<ProductVO> productDlist() {
+		return mapper.productDlist();
+	}
 	
 	
-
+	
 }

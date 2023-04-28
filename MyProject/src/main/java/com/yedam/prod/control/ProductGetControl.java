@@ -21,16 +21,18 @@ public class ProductGetControl implements Control {
 		List<ProductVO> list = service.productList();
 		req.setAttribute("List", list);
 		
+		List<ProductVO> Dlist = service.productDlist();
+		req.setAttribute("DList", Dlist);
+		System.out.println(Dlist);
+		
 		String PN = req.getParameter("PN");
 		System.out.println(PN);
 		
 		ProductVO vo = service.getProduct(Integer.parseInt(PN));
 		req.setAttribute("productGet", vo);
 		System.out.println(vo);
+		
 		return "prod/prodMain.tiles";
-		
-		
-		
 		
 	
 	}

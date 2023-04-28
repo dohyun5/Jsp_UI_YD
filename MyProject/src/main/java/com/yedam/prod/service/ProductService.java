@@ -8,5 +8,6 @@ public interface ProductService {
 
 	public List<ProductVO> productList();
 	public ProductVO getProduct(int productNo);
-	
+	public List<ProductVO> productDlist();
 }
+

@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yedam.prod.control.ProductAddControl;
 import com.yedam.prod.control.ProductGetControl;
 import com.yedam.prod.control.ProductListControl;
+import com.yedam.prod.control.ProductUploadControl;
 
 public class FrontController extends HttpServlet{
 
@@ -28,8 +30,14 @@ public class FrontController extends HttpServlet{
 		encoding = config.getInitParameter("enc");
 		//상품 리스트
 		map.put("/productList.do", new ProductListControl());
+		
 		//상세페이지
 		map.put("/productGet.do", new ProductGetControl());
+		
+		//ckeditor관련
+		map.put("/productAdd.do", new ProductAddControl());
+		//ckeditor 이미지 업로드 처리.
+		map.put("/prodUpload.do", new ProductUploadControl());
 	}
 	
 	@Override
@@ -50,7 +58,11 @@ public class FrontController extends HttpServlet{
 			resp.sendRedirect(viewPage);
 			return;
 		}
-		
+		if(viewPage.endsWith(".json")) {
+			resp.setContentType("text/json;charset=utf-8");
+			resp.getWriter().print(viewPage.substring(0,viewPage.length()-5)); //.json제외하고 가져오기 위해 
+			return;
+		}
 		RequestDispatcher rd = req.getRequestDispatcher(viewPage);
 		rd.forward(req, resp);
 		

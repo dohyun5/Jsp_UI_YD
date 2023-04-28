@@ -19,7 +19,6 @@
     <body>
     
         <!-- Navigation-->
-        
        
         <!-- Product section-->
         <section class="py-5">
@@ -50,7 +49,8 @@
             <div class="container px-4 px-lg-5 mt-5">
                 <h2 class="fw-bolder mb-4">Related products(추천순위)</h2>
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                <c:forEach var="product" items="${List}" begin="1" end="4">
+                <c:forEach var="product" items="${DList}" begin="1" end="4">
+                
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
