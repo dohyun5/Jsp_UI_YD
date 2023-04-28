@@ -38,3 +38,4 @@ public class ProductGetControl implements Control {
 	}
 
 }
+	
