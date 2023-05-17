@@ -37,7 +37,6 @@ public class GetNoticeControl implements Control {
 			req.setAttribute("fileType", fileType.substring(0, fileType.indexOf("/")));
 			//req.setAttribute("fileType", fileType.substring(0, 5));
 			
-			
 		}
 		
 		return "notice/noticeGet.tiles";

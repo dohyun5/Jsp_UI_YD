@@ -14,4 +14,7 @@ public interface NoticeService {
 	public boolean removeNotice(int noticeNo);
 	public NoticeVO getNotice(int noticeNo);
 	public int totalCount();
+	
 }
+
+
