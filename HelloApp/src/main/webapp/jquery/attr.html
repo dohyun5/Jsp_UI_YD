@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Access</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				// <img>요소의 src 속성값을 읽어오는 getter 메소드
+				var imgSrc = $("img").attr("src");
+				// <img>요소의 src 속성값을 새로운 값으로 설정하는 setter 메소드
+				$("img").attr("src", "../images/2.jpg");
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.attr() 메소드</h1>
+	<p>아래의 버튼을 누르면 다음 이미지를 변경할 수 있어요!!</p>
+	<button>src 속성 변경!</button><br><br>
+	<img src="../images/3.jpg" style="width:320px; height:214px; border: 1px solid black">
+	
+</body>
+
+</html>

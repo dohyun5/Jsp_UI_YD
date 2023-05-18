@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>webapp/jquery/index.html</title>
+  <!-- <script src="../js/jquery-3.7.0.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+  <!-- <script src="basic1.js"></script> -->
+  <script src="fetchMember.js"></script>
+  <script>
+
+  </script>
+</head>
+
+<body>
+  <ul id="list">
+    <li>Apple</li>
+    <li>Banana</li>
+  </ul>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <td><input type="text" id="id"></td>
+    </tr>
+    <tr>
+      <th>Fname</th>
+      <td><input type="text" id="fname"></td>
+    </tr>
+    <tr>
+      <th>Lname</th>
+      <td><input type="text" id="lname"></td>
+    </tr>
+    <tr>
+      <th>Gender</th>
+      <td><select id="gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+        </select></td>
+    </tr>
+    <tr>
+      <td><button id="addBtn">Add</button></td>
+      <td><button id="saveBtn">save</button></td>
+      <td><button id="upBtn">up</button></td>
+      <td><button id="downBtn">down</button></td>
+    </tr>
+  </table>
+
+
+
+  <div id="show">
+    <!--(p>span+button{Click})*3-->
+    <p><span>Hello</span><button>Click</button></p>
+    <p><span>World</span><button>Click</button></p>
+    <p><span>Good</span><button>Click</button></p>
+  </div>
+
+  <div id="show2">
+    <!--(p>span+button{Click})*3-->
+    <p><span>Hello</span><button>Click</button></p>
+    <p><span>World</span><button>Click</button></p>
+    <p><span>Good</span><button>Click</button></p>
+    <p>He<b>llo</b></p>
+  </div>
+
+  <table style="display: none;">
+    <tr class="template">
+      <td>1</td>
+      <td>Kimbell</td>
+      <td>Full</td>
+      <td>Male</td>
+      <td><button>Delete</button></td>
+      <td><input type="checkbox"></td>
+    </tr>
+  </table>
+
+
+
+
+
+</body>
+
+</html>
