@@ -20,7 +20,9 @@
 
 	<!-- 공지사항 관련. -->
 	<select id="noticeList" resultType="notice">
-		select * from tbl_notice order by 1 DESC
+		<![CDATA[
+			select * from tbl_notice where rownum < 10 order by 1 DESC
+		]]>
 	</select>
 	<select id="noticeWithPage" resultType="notice">
   <![CDATA[
@@ -33,9 +35,12 @@
 	]]>
 	</select>
 	<insert id="insertNotice" parameterType="notice">
+	<selectKey keyProperty="noticeNo" resultType="int" order="BEFORE">
+		select notice_seq.nextval from dual
+	</selectKey>
 		insert into tbl_notice (notice_no, notice_writer, notice_title,
 		notice_content, attach_file)
-		values(notice_seq.nextval, #{noticeWriter}, #{noticeTitle}, #{noticeContent}, #{attachFile})
+		values(#{noticeNo}, #{noticeWriter}, #{noticeTitle}, #{noticeContent}, #{attachFile})
 	</insert>
 	<update id="updateNotice" parameterType="notice">
 		update tbl_notice

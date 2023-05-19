@@ -62,7 +62,7 @@ $(function () {
     makeHead();
   }
   
-  
+
   $('#addBtn').on('click', AddMember)
   function AddMember(e){
     let tr = $('<tr />').append($('<td />').text($('#id').val()),
@@ -96,7 +96,7 @@ $(function () {
       $('<td />').append($('<input>').val(oldFname)),
       $('<td />').html('<input type="text" value="'+oldLname+'">'),
       $('<td />').append('<select id="gender"><option value="'+oldGender+'">'+oldGender+'</option><option value="Male">Male</option><option value="Female">Female</option></select>'),
-      $('<td />').append($('<button />').text('save').on('click', updateTr)),
+      $('<td />').append($('<button />').text('save').on('click', updateTr))
     );
 
       console.log(oldTr);
@@ -113,6 +113,7 @@ $(function () {
     $('td:contains('+id+')').parent().children().eq(2).text(lname);
     $('td:contains('+id+')').parent().children().eq(3).text(gender);
   }
+  
   $('button:eq(2)').on('click',function(){
     let targetTr = $('input[type="checkbox"]:checked').closest('tr');
     targetTr.next().after(targetTr);
