@@ -48,10 +48,8 @@ $('#noticeList').on('dblclick','tr', function(){
       $('.nTitle').text(data.noticeTitle),
       $('.nContent').val(data.noticeContent),
       $('.nWriter').text(data.noticeWriter),
-      $('.nFile').text(data.attachFile)
+      $('.nFile').css('width','100px').attr('src','images/'+data.attachFile)
     }
-
-    
 
   })
 

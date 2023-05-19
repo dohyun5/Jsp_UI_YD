@@ -23,7 +23,7 @@ public class GetNoticeJsonControl implements Control {
 		
 		Gson gson = new GsonBuilder().create();
 		
-		return gson.toJson(notice);
+		return gson.toJson(notice)+".json";
 	}
 
 }
