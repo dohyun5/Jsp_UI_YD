@@ -48,10 +48,8 @@ $('#noticeList').on('dblclick','tr', function(){
       $('.nTitle').text(data.noticeTitle),
       $('.nContent').val(data.noticeContent),
       $('.nWriter').text(data.noticeWriter),
-      $('.nFile').text(data.attachFile)
+      $('.nFile').css('width','100px').attr('src','images/'+data.attachFile)
     }
-
-    
 
   })
 
@@ -79,7 +77,7 @@ $('#attachFile').on('change',function(e){
   console.log(e.target.files[0])
 
   let data = new FormData();
-  data.append('nNo',$('.nNo').text);
+  data.append('nNo',$('.nNo').text());
   data.append('nFile',e.target.files[0])
   console.log(data);
 
@@ -90,7 +88,48 @@ $('#attachFile').on('change',function(e){
     //multipart 요청 아래 두가지를 false로 지정해야함 
     contentType: false,
     processData: false,
+    error: function(err){
+      console.error(err)
+    },
+    success:function(result){
+      console.log(result)
+      //이미지 변경.
+      $('img.nFile').attr('src','images/'+ result.attachFile);
+
+    }
   });
+
+
+})
+
+//모달창의 수정버튼 클릭.
+$('div.modal-body button').on('click',function(e){
+  let no = $('div.modal-body td.nNo').text();
+  let title = $('div.modal-body td.nTitle').text();
+  let content = $('div.modal-body textarea.nContent').val();
+  $.ajax({
+    url:'modifyNoticeJson.do',
+    method:'post',
+    data: {no:no, title:title, content:content},
+    error:function(){
+
+    },
+    success:function(result){
+      if(result.retCode == 'Success'){ 
+        console.log(result.retVal); //no,title,content,file...
+        $('#tr_'+result.retVal.noticeNo).find('img').attr('src','images/'+result.retVal.attachFile);
+        $('#tr_'+result.retVal.noticeNo).find('td:nth-of-type[2]').text(result.retVal.noticeContent);
+        console.log();
+        $('#myModal').hide();
+      }else if(result.retCode == 'Fail'){
+        alert('error 발생')
+      }
+    }
+
+
+
+
+  })
 
 
 })
@@ -129,6 +168,7 @@ $('#attachFile').on('change',function(e){
               $('<td />').css('vertical-align', 'middle').append($('<img>').css('width', '100px').attr('src', 'images/' + val.attachFile)),
               $('<td />').css('vertical-align', 'middle').append($('<button />').text('Delete').on('click', deleteRow))
             );
+            tr.attr('id','tr_'+notice.NoticeNo);
             $('#noticeList').prepend(tr);
             $('form')[0].reset();//form reset 이벤트 호출 
           } else if (data.retCode == 'Fail') {
@@ -165,6 +205,7 @@ $('#attachFile').on('change',function(e){
           $('<td />').css('vertical-align', 'middle').append($('<img>').css('width', '100px').attr('src', 'images/' + notice.attachFile)),
           $('<td />').css('vertical-align', 'middle').append($('<button />').text('Delete').on('click', deleteRow)))
 
+          tr.attr('id','tr_'+notice.noticeNo);
         $('#noticeList').append(tr);
       })
     }

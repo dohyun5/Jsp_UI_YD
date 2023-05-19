@@ -11,9 +11,11 @@ public interface NoticeService {
 	public List<NoticeVO> noticeList(int page);
 	public boolean addNotice(NoticeVO vo);
 	public boolean modifyNotice(NoticeVO vo);
+	public boolean modifyNoticeFile(NoticeVO vo); //파일정보 변경
 	public boolean removeNotice(int noticeNo);
 	public NoticeVO getNotice(int noticeNo);
 	public int totalCount();
+	
 	
 	//json 
 	public List<NoticeVO> noticeListJson();

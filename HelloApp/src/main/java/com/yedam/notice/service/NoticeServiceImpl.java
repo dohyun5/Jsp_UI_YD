@@ -52,6 +52,10 @@ public class NoticeServiceImpl implements NoticeService { //인터페이스 구�
 	public int totalCount() {
 		return mapper.getCount();
 	}
+	@Override
+	public boolean modifyNoticeFile(NoticeVO vo) {
+		return mapper.updateNoticeFile(vo) == 1;
+	}
 
 	
 }

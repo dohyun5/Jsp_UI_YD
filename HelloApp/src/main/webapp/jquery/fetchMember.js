@@ -74,13 +74,13 @@ $(function () {
         $('#memberList').append(tr);
         $('input[type=text]').val('');//input 비워주기
   }
-//
+  //
   $('#saveBtn').on('click',update)
 
   //마우스 오버시 input 채워주기
 
-//더블 클릭시 바꿔주기
-//라이브이벤트
+  //더블 클릭시 바꿔주기
+  //라이브이벤트
   $('body').on('dblclick', '#memberList tr', function(){
     console.log('tr click.');
     //새로운 tr생성.

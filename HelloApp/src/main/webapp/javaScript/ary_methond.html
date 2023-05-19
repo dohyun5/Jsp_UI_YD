@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>arrayMerhod.html</title>
+  <script src="memberList.js"></script>
+  <script>
+
+    // <div id="show"></div>
+    //회원아이디/ 이름/ 급여/ 누적 급여
+
+    // console.log(data);
+    
+    
+    
+    // function makeBody(){
+      
+      
+    //   data.forEach(function(data){
+    //     let tr = $('<tr />').append($('<td />').text(data.id),$('<td />').text(data.first_name),$('<td />').text(data.salary));  
+        
+        
+    //   })
+      
+      
+    // }
+    
+
+
+  </script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+    //console.log(data);
+
+    //배열메소드 : forEach(item,idx(인덱스값),ary)
+    let sum = 0;
+    let arg = 0;
+    let cnt = 0;
+    data.forEach(function(item,idx,ary){
+      //console.log(item)
+      // if(idx%2==1){
+      //   console.log(item);
+      // } //짝수만 가져오기
+      // if(item.gender == 'Male'){
+      //   console.log(item);
+      // }
+      if(item.salary > 4000 && item.gender=='Female'){
+        sum += item.salary;
+        cnt ++;
+      }
+
+      
+      
+    });
+    console.log(sum)
+    console.log(cnt)
+    arg = (sum / cnt);
+    console.log("합계 :"+sum +" 평균 :"+arg)
+    
+    //map() => 배열의 갯수만큼 새로운 형태의 값을 반환.
+    //A -> A'  왼쪽과 같이 형태를 변형시킬때 map사용
+    result = data.map(function(item){//새로운 배열을 반환. 
+      let male = {}
+      male.id = item.id;
+      male.name = item.first_name + '-' + item.last_name;
+
+      return male;
+    });
+    // console.clear();
+    // console.log(result);
+
+
+    //filter() => 조건을 만족하는 새로운 배열.
+    // A -> B 
+    result = data.filter(function(item){
+      return item.gender == "Male";
+
+    });
+
+    // console.clear();
+    // console.log(result);
+
+    //reduce() => map 이던 filter이던 원하는 조건 걸면 되지만  반환값이 배열,number,문자... 가능
+    sum = 0;
+    result = data.reduce(function(acc, val, idx, ary){
+        return sum += val.salary;
+    }, sum);
+    console.log(result);
+    // id/ name/ gender/ salary
+    
+    //splice()
+    data = [];
+    data.push({id:data.length+1, name:'Apple'});
+    data.push({id:data.length+1, name:'Banana'});
+    data.unshift({id:data.length+1, name:'Cherry'});
+    data.splice(1,0,{id:data.length+1, name:'Durian'});
+    //data.pop();//마지막 데이터 제거
+    //data.shift();//첫번째 데이터 제거
+   // data.splice(2,1); //index,갯수, 대체값 안넣어 주면 삭제임 위에 처럼 값 넣어주면 들어감.
+    console.log(data);
+    //Array.some
+    result = data.some(function(item){
+      return item.name == 'Banana';
+
+    })
+    result = data.every(function(item){
+      return item.name.length >= 5; //모든 값이 만족해야 true
+    })
+    console.log(result);
+
+    //from()
+    result = Array.from('abcde');
+    console.log(result);
+
+    result = "a,b,c,d,e".split(',').reverse();
+    console.log(result);
+
+    //sort()
+    data = ['banana','cherry','apple'];
+    result = data.sort();//순서정렬
+    console.log(result);
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    document.addEventListener('DOMContentLoaded',function(){
+    result = data.reduce(function(acc, val,idx){
+      let tr = $('<tr />')
+
+
+
+
+
+      return acc;
+
+    }, $('<table />'));
+    
+    $('#show').append(result);
+  })
+
+
+
+
+  // document.addEventListener('DOMContentLoaded',function(){
+  //   let easyAry = ['one','two','three']
+  //   result = easyAry.reduce(function(acc, val){
+  //     console.log(acc,val);
+  //     //acc.push(val.toUpperCase());
+  //     let p = document.createElement('p');
+  //     p.innerText = val;
+  //     acc.append(p);
+  //     return acc;
+  //   }, document.getElementById('show')); 
+  //   console.log(result);
+  // })
+
+  // document.addEventListener('DOMContentLoaded',function(){
+  //   let easyAry = ['one','two','three']
+  //   //let tbl = document.createElement('table')
+    
+  //   result = easyAry.reduce(function(acc, val,idx){
+  //     //console.log(acc,val);
+  //     acc += '<tr><td>'+ ++idx + '</td><td>'+val+'</td></tr>'
+  //     return acc;
+  //   }, "<table border=1>");
+  //   result += "</table>"
+
+  //   document.querySelector('#show').innerHTML = result;
+  // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </script>
+
+</head>
+<body>
+  <div id = "show">
+    <!-- <table border="1">
+      <thead>
+        <tr><th>id</th>
+            <th>이름</th>
+            <th>급여</th>
+            <th>합계급여</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td><td>홍길동</td><td>3500</td><td>3500</td>  
+        </tr>
+        <tr>
+          <td>2</td><td>김길동</td><td>2800</td><td>6300</td>
+        </tr>
+        <tr>
+          <td>3</td><td>박길동</td><td>4000</td><td>10300</td>
+        </tr>
+      </tbody>
+      <tr>
+    </table> -->
+  </div>
+</body>
+</html>
