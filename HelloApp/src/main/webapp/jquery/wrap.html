@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Insert</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<style>
+		div { margin: 10px; }
+		.content { border: 2px solid yellow; }
+		.wrapper { border: 2px solid green; }
+	</style>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				// class가 "content"인 각 요소에 포함되는 새로운 요소를 추가함.
+				$(".content").wrapAll("<div class='wrapper'></div>");
+        //wrap 밖에 감싸는거 wrapinner안에 생성 wrapAll모두 감싸는거 wrapAll은 사용 빈도가 높을 지도?
+
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.wrapInner() 메소드</h1>
+	<div class="content">첫 번째 컨텐츠에요!</div>
+	<div class="content">두 번째 컨텐츠에요!</div>
+	<button>div 요소 추가</button>
+	
+</body>
+
+</html>

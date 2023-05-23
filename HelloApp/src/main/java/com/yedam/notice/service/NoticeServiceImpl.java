@@ -19,6 +19,10 @@ public class NoticeServiceImpl implements NoticeService { //인터페이스 구�
 		//return mapper.noticeList();
 		return mapper.noticeWithPage(page);
 	}
+	@Override
+	public List<NoticeVO> noticeListJson() {
+		return mapper.noticeList();
+	}
 
 	@Override
 	public boolean addNotice(NoticeVO vo) {
@@ -48,4 +52,10 @@ public class NoticeServiceImpl implements NoticeService { //인터페이스 구�
 	public int totalCount() {
 		return mapper.getCount();
 	}
+	@Override
+	public boolean modifyNoticeFile(NoticeVO vo) {
+		return mapper.updateNoticeFile(vo) == 1;
+	}
+
+	
 }

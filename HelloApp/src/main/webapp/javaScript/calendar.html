@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #show{
+      display: inline-block;
+      width: 350px;
+      height: 350px;
+      background-color: yellow;
+
+    }
+    #show span{
+      display: inline-block;
+      width: 90px;
+      height: 30px;
+      background-color: aquamarine;
+      text-align: center;
+      margin-top: 2px;
+    }
+  </style>
+</head>
+
+<body>
+
+<tbody>
+
+  <h3>5월 달력</h3>
+  <div id="show">
+    <input type="text" id="words">
+    <button class="delBtn">검색 삭제</button>
+    <br>
+    
+  </div>
+
+<table>
+  <!--<thead>      
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thr</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tr>
+        <td></td>
+        <td>1</td>
+        <td>2</td>
+        <td>3</td>
+        <td>4</td>
+        <td>5</td>
+        <td>6</td>
+      </tr>
+      <tr>
+        <td>7</td>
+        <td>8</td>
+        <td>9</td>
+        <td>10</td>
+        <td>11</td>
+        <td>12</td>
+        <td>13</td>
+      </tr> -->
+</tbody>
+</table>
+
+</body>
+
+</html>
+
+<!-- <script src="calendarFun.js"></script> -->
+<!-- <script src="calendarObj.js"></script> -->
+<script>  
+  let initSecs = 70;
+  let time = setInterval(function(){
+    mission = !document.querySelectorAll('#show span').length;
+    console.log(initSecs--)
+    if(mission){
+      alert((70-initSecs)+'초 만에 성공');
+      clearInterval(time);
+    }
+    if(initSecs == 0){
+      alert('꺄하하 실패');
+      clearInterval(time);
+    }
+  },1000);
+
+  
+  let words = `Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero eum aliquid rem vel adipisci saepe obcaecati earum placeat molestiae! Qui culpa nihil, neque eum magni soluta iste nesciunt facere`
+  //split(구분자) => 배열.
+  let wordAry = words.split(' ');
+  console.log(wordAry)
+  for (let i = wordAry; i <= wordAry.length; i++) {
+      let span = document.createElement('span')
+      span.innerText = i;
+  }
+  wordAry.forEach(word => {
+    let span = document.createElement('span')
+    span.innerText = word;
+    show.append(span);
+  })
+
+  document.querySelector('#words').addEventListener('change', function(){
+    let targetElem = document.querySelectorAll('#show span');
+    targetElem.forEach(span =>{
+      let search = document.getElementById('words').value;
+      if(span.innerText == document.getElementById('words').value){
+      span.remove();
+    }
+    })
+    document.getElementById('words').value = '';
+  });
+  
+ 
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+<!--<!DOCTYPE html>
+// <html lang="ko">
+// <head>
+//   <meta charset="UTF-8">
+//   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+//   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+//   <title>calendar.html</title>
+// </head>
+// <body>
+  
+//   <div id="show">
+//     <table border="1">
+     
+
+
+    
+
+
+//     </table>
+//   </div>  
+//   <script>
+//     let mon = 5;
+//     let days = ['Sun','Mon','Tue','Wed','Thr','Fri','Sat'];
+//     let tbl = document.createElement('table');
+//     let thead = document.createElement('thead');
+//     let tr = document.createElement('tr');
+//     let th = document.createElement('th');
+//     let td = document.createElement('td');
+//     let tbody = document.createElement('tbody');
+    
+//     tbl.border = '1';
+//     for(let day of days){
+//         th.innerText = day;
+//         tr.append(thead)
+//     }
+//     thead.append(tr);
+//     tbl.append(thead);
+//     for(let i=0; i<= getFirstDay(month);i++){
+//       tr.append(td)
+//     }
+//     for(let i=1;i<=getLastDate(month);i++){
+//       td.innerText = i;
+//       tr.append(td);
+//       if((i + getFirstDay(month))%7==0) {
+//         tbody.append(tr);
+//       }
+//     }
+//     tbody.append(tr);
+//     tbl.append(tbody);
+//     document.getElementById('show').append(tbl)
+//   //월 정보를 받고 첫번째 날짜의 값을 반환해주는 함수.
+//   //
+//   function getFirstDay(month = 5){
+//     if(month==5){
+//       return 1;
+//     }else if(month==6){
+//       return 4;
+//     }
+
+//   }
+//   //월 정보를 받고 마지막 날짜를 반환해주는 함수.
+//   function getLastDate(month=5){
+//     if(month==5){
+//       return 31;
+
+//     }else if(month==6){
+//       return 30;
+//     }
+//   }
+
+
+
+//   </script>
+
+
+
+
+// </body>
+// </html>-->

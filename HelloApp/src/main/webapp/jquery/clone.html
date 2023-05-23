@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Element Clone</title>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function() {
+			$("button").on("click", function() {
+				// id가 "firstItem"인 요소를 복사하여 id가 "list"인 요소에 추가함.
+				$("#firstItem").clone().appendTo("#list");
+        //$("#secondItem").clone().css('background','yellow').appendTo("#list");
+        //append prepend 부분 수정에 따라 원하는 위치에 복사 가능.
+        //$("li:eq(2)").clone().css('background','blue').css('color','white').appendTo('#list');
+        $("li:gt(1)").clone().css('background','blue').css('color','white').appendTo('#list');
+
+			});
+		});
+	</script>
+</head>
+
+<body>
+
+	<h1>.clone() 메소드</h1>
+	<ul id="list">
+		<li id="firstItem">첫 번째 아이템이에요!</li>
+		<li id="secondItem">두 번째 아이템이에요!</li>
+		<li>세 번째 아이템이에요!</li>
+	</ul>
+	<button>아이템 복사</button>
+	
+</body>
+
+</html>
