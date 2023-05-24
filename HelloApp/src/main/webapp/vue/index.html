@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+
+</head>
+<body>
+  <div id="app">
+    <p>{{msg}}</p>
+    <p v-if="see">Script-Vue에서 true - 표시됨, false - 표시안됨</p>
+  </div>  
+  <script>
+    let vm = new Vue({
+      el: '#app',
+      data: {
+        msg: 'Hello, World',
+        see: true //
+      }
+    }); //M-V-VM(vue)
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v03_if.html</title>
+  <script src="https://unpkg.com/vue@2"></script>
+</head>
+<body>
+  <div id="app">
+    <h3>등급표기</h3>
+    <p v-if="grade == 'A'">A등급</p>
+    <p v-else-if="grade == 'B'">B등급</p>
+    <p v-else-if="grade == 'C'">C등급</p>
+    <p v-else>등급 없음</p>
+
+    <h3>점수에 따른 등급표기</h3>
+    <p v-if="score>90">A등급</p>
+    <p v-else-if="score>80">B등급</p>
+    <p v-else-if="score>70">C등급</p>
+    <p v-else>등급 없음</p>
+  </div>
+  <script>
+    new Vue({
+      el:'#app',
+      data:{
+        grade:'D',
+        score:75
+      } 
+    })
+  </script>
+
+</body>
+</html>

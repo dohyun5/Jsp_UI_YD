@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v02_for_if.html</title>
+  <script src="https://unpkg.com/vue@2"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h3>짝수값을 출력</h3>
+    <ul>
+      <template v-for="(num,idx) in intArray">
+        <li v-if="num % 2 == 0" style="list-style: none;">{{num}} - {{idx}}</li>
+        <li v-else style="list-style: none;">홀수임</li>
+      </template>
+    </ul>
+    <template>  <!-- 그룹으로 묶어주기만 할뿐 화면에 표시는 되지 않음 -->
+      <div>
+        <p>Hello</p>
+      </div>
+    </template>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        intArray: [1, 2, 3, 4, 5, 6]
+      }
+    })
+  </script>
+
+  <div id="app2">
+    <h3>이벤트를 통한 출력</h3>
+    <ul>
+      <li v-for="num in intArray" style="list-style: none;">{{num}}</li>
+    </ul>
+    <button v-on:click="showEven">짝수 출력</button>
+    <!-- <button v-on:click="showOdd">홀수 출력</button> -->
+    <button v-on:click="orderDesc">내림차순 정렬</button>
+  </div>
+  <script>
+    new Vue({
+      el:'#app2',
+      data:{
+        intArray: [1, 2, 3, 4, 5, 6]
+      },
+      methods:{
+        showEven:function(){
+          let newAry = this.intArray.filter(function(num,idx,arr){
+            return num % 2 == 0;
+          })
+          this.intArray = newAry;
+        },
+        // showOdd:function(){
+        //   let newAry = this.intArray.filter(function(num,idx,arr){
+        //     return num % 2 == 1;
+        //   })
+        //   this.intArray = newAry;
+        // },
+        orderDesc(){
+          let newAry = this.intArray.reverse();
+          this.intArray = newAry;
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

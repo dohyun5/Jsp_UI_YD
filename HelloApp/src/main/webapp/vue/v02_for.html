@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v02_for.html</title>
+  <script src="https://unpkg.com/vue@2"></script>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="fruit in fruits" style="list-style: none;">{{fruit}}</li>
+    </ul>
+    <ul>
+      <li v-for="n in 10" style="list-style: none;">2 * {{n}} = {{2*n}}</li>
+    </ul>
+    <ul>
+      <li v-for="item in objAry" style="list-style: none;">{{item.name}} - {{item.price}}</li>
+    </ul>
+    <h3>관심 받고 있는 언어 TOP3</h3>
+    <table border="1">
+      <thead>
+        <th v-for="head in hData">{{head}}</th>
+      </thead>
+      <tbody>
+        <tr v-for="line in rData">
+          <td v-for="item in line">{{item}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    new Vue({
+      el:'#app',
+      data:{
+        fruits:['Apple','Banana','Cherry'],
+        objAry:[{name:"coffee",price:4500},{name:"milk",price:2600},{name:"greenTea",price:5000}],
+        rData:[
+          ['C',2,1,2],
+          ['C++',3,3,3],
+          ['Java',1,2,1]
+        ],
+        hData:['언어','2020','2021','2022']
+      } 
+    })
+  </script>
+
+</body>
+</html>
