@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v04_component1.html</title>
+  <script src="https://unpkg.com/vue@2"></script>
+  <script>
+    Vue.component('my-component',{
+      template:`
+      <div>
+        <h1>사용자 정의 전역컴포넌트 입니다.</h1>
+      </div>
+      `
+    })
+  </script>
+</head>
+
+<body>
+  <div id="app">
+    <my-component></my-component>
+    <instance-component></instance-component>
+  </div>
+
+  <hr>
+  
+  <div id="app2">
+    <my-component></my-component>
+    <instance-component v-bind:message="msg"></instance-component>
+    <instance-component v-bind:message="msg"></instance-component>
+  </div>
+
+  <script>
+    new Vue({
+      el:'#app',
+      components:{
+        'instance-component':{
+          template:`
+          <div style="border:5px solid gray">
+            <span><h3>지역 컴포넌트 입니다</h3></span>
+          </div>
+          `
+        }
+      }
+    })
+  </script>
+  
+  <script>
+    // Vue.component('my-component', {
+    //   template: '<div>Hello, Global Component</div>'
+    // })
+    const MyComponent= {
+      template : '<div>Hello, Component</div>'
+    }
+    // new Vue({
+    //   el: '#app',
+    //   components: {
+    //     'my-component': MyComponent
+    //   }
+    // });
+
+    new Vue({
+      el:'#app2',
+      data:{
+        msg:'Hello'
+      },
+      components:{
+        // 'instance-component':{
+        //   template:` 
+        //   <div style="border: 5px dotted gray">
+        //     <strong>새로운 지역 컴포넌트 임</strong>
+        //   </div>
+        //   `
+        // },
+        'instanceComponent':{
+          template:` 
+          <div style="border: 5px dotted gray">
+            <strong style="border: 2px solid orange">새로운 지역 컴포넌트 임</strong>
+            <p style="border: 2px solid Green">{{message}}</p>
+            <b style="border: 2px solid blue">{{innerMsg}}</b>
+            <button v-on:click="changeMsg">변환</button>
+          </div>
+          `,//html은 대소문자 구분 안해서 위나 아래나 같음.
+          props:['message'],
+          data:function(){
+            return {
+              innerMsg:"Hi, World"
+            }
+          },
+          methods:{
+            changeMsg(){
+              this.innerMsg = "안녕하냐 ? 세계야?"
+            }
+          }
+        }
+      }
+    })
+  </script>
+
+
+</body>
+
+</html>
