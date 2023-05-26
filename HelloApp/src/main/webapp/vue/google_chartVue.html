@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+
+    </div>
+
+    
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                origData:[
+                    {name:'Task',value:'Hours per Day'},
+                    {name:'도시락', value:3},
+                    {name:'갈비탕', value:3},
+                    {name:'오므라이스', value:4},
+                    {name:'짬뽕', value:2},
+                    {name:'비빔밥', value:7},
+                    {name:'메밀소바', value:4},
+                ]
+            },
+            methods:{
+
+            },
+            components:{
+                'chat-component':{
+                    template:`
+                    <div>
+                        <div id="piechart" style="width: 900px; height: 500px;"></div>
+                        <ul id="list">
+                        
+                        </ul>
+                    </div>
+                    `,
+
+                }
+            }
+        })
+        
+    </script>
+
+</body>
+</html>

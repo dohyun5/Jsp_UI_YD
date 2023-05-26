@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v06_component2.html</title>
+  <script src="https://unpkg.com/vue@2"></script>
+  <style>
+    #list{
+      width: 400px;
+      border: 1px solid gray;
+      border-collapse: collapse;
+    }
+    #list th, #list td {
+      border: 1px solid green;
+      text-align: center;
+    }
+    #list > thead > tr {
+      color: whitesmoke;
+      background-color: rgb(67, 67, 175);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <h1>예방 접종</h1>
+    <hr>
+    <h3>1차 대상자</h3>
+    <contactlist-component v-bind:contacts="list1"></contactlist-component>
+    <h3>2차 대상자</h3>
+    <contactlist-component v-bind:contacts="list2"></contactlist-component>
+
+  </div>
+  <script>
+    const ContactComponent={
+      template:`
+        <div>
+          <table id="list">
+            <thead>
+              <tr>
+                <th>순번</th>  
+                <th>이름</th>  
+                <th>전화번호</th>  
+                <th>주소</th>  
+              </tr>  
+            </thead>
+            <tbody>
+              <tr v-for="contact in contacts">
+                <td>{{contact.no}}</td>
+                <td>{{contact.name}}</td>
+                <td>{{contact.phone}}</td>
+                <td>{{contact.address}}</td>
+              </tr>  
+            </tbody>
+          </table>  
+        </div>
+      `,
+      props:['contacts']
+    }
+      new Vue({
+      el:'#app',
+      data:{
+        list1:[
+          {no: 23, name:'홍길동', phone:'010-1234-5678',address: '대구 100'},
+          {no: 24, name:'만지로', phone:'010-4564-3212',address: '대구 200'},
+          {no: 25, name:'소파도', phone:'010-7979-7898',address: '대구 300'}
+        ],
+        list2:[
+          {no: 33, name:'미쥬리', phone:'010-1514-7854',address: '대구 500'},
+          {no: 34, name:'김이박', phone:'010-5812-3792',address: '대구 600'},
+          {no: 35, name:'가사리', phone:'010-1234-2546',address: '대구 700'}
+        ]
+      },
+      components:{
+        'contactlist-component' : ContactComponent
+      }
+    })
+  </script>
+
+</body>
+
+</html>
