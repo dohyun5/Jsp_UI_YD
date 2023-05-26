@@ -2,96 +2,84 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <style>
-    .done-style {
-      text-decoration: line-through;
-      color: lightgray;
-    }
-  </style>
-  <script src="https://unpkg.com/vue@2"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        var orgdata = [
+            ['Task', 'Hours per Day'],
+            ['도시락', 3], ['갈비탕', 2],
+            ['오므라이스', 2], ['짬뽕', 2],
+            ['비빔밥', 7], ['메밀소바', 3]
+        ];
+
+    </script>
 </head>
 
 <body>
-  <h2>TO DO List</h2>
-  <div id="app">
-    <div v-for="todo in todos">
-      <label>
-        <input type="checkbox" v-model="todo.done">
-        <span v-bind:class="{'done-style': todo.done}">{{todo.text}} (완료일: {{todo.doneDate}})</span>
-      </label>
+
+    <div id="piechart" style="width: 900px; height: 500px;"></div>
+    <div id="app">
+        <list-component :listcomp="dataArray" @draw-chart="drawChart"></list-component>
     </div>
-    <input type="text" v-model.trim="addText" v-on:keyup.enter="addToDo" placeholder="할일">
-    <input type="text" v-model="addDate" v-on:keyup.enter="addToDo" placeholder="완료일(yyyymmdd형식)">
-    <p>
-      <button v-on:click="cleanToDo">처리완료삭제</button>
-      <button v-on:click="sortDate">완료일순정렬</button>
-    </p>
-    <p>{{remaining}} / {{todos.length}}</p>
-  </div>
-  <script>
-    var vm = new Vue({
-      el: '#app',
-      data: {
-        addText: 'test',
-        addDate: '20230115',
-        todos: [{
-            done: false,
-            text: 'bread',
-            doneDate: '20230115'
-          },
-          {
-            done: false,
-            text: 'coffee',
-            doneDate: '20230201'
-          },
-          {
-            done: true,
-            text: 'tea',
-            doneDate: '20230129'
-          },
-        ]
-      },
-      computed: {
-        remaining: function () {
-          return this.todos.filter(function (val) {
-            return val.done;
-          }).length;
-        }
-      },
-      methods: {
-        addToDo: function () {
-          if (this.addText && this.addDate) {
-            this.todos.push({
-              done: false,
-              text: this.addText,
-              doneDate: this.addDate
-            });
-            this.addText = '';
-            this.addDate = '';
-            console.log(this.$el.querySelector('input[placeholder]:nth-of-type(1)').focus());
-            console.log(this.$el.children)
-          } else {
-            alert('값을 다 입력하세요.')
-          }
-        },
-        cleanToDo: function () {
-          this.todos = this.todos.filter(function (val) {
-            return val.done == false;
-          })
-        },
-        sortDate: function () {
-          this.todos.sort(function (first, last) {
-            return parseInt(first.doneDate) - parseInt(last.doneDate)
-          })
-        }
-      }
-    })
-    console.log(vm)
-  </script>
+
+    <script>
+
+        
+        let vm =new Vue({
+            el: '#app',
+            data: {
+                dataArray: orgdata
+            },
+            methods : {
+                drawChart(list) {
+                    if(list !=null){
+                        for(let i = 0 ; i<this.dataArray.length; i++){
+                        if(this.dataArray[i][0] == list[0] ) {
+                            this.dataArray[i][1]++;
+                        }
+                    }
+                }
+                    
+                var data = google.visualization.arrayToDataTable(this.dataArray);
+                var options = {
+                    title: 'My Daily Activities',
+                    is3D: false
+                };
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+                chart.draw(data, options);
+            }
+            },
+            components : {
+                'list-component' : {
+                    template: `
+                    <ul>
+                    <li v-for="list in listcomp" v-if="list[0] != 'Task'">{{list[0]}}<button @click="vott(list)">vote</button></li>
+                    </ul>
+                    `,
+                    props : ['listcomp'],
+                    methods : {
+                        vott : function(list) {
+                            this.$emit('draw-chart', list);
+                        }
+                    }
+                }
+            }
+            
+        })
+
+        google.charts.load('current', {
+            'packages': ['corechart']
+        });
+        google.charts.setOnLoadCallback(vm.drawChart);
+
+    </script>
+
+
 </body>
 
 </html>
